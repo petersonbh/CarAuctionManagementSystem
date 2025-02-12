@@ -8,10 +8,10 @@ public static class UpdateAuctionEndPoint
 {
     public static void MapUpdateAuctionEndpoint(this IEndpointRouteBuilder app)
     {
-        app.MapPut("/auctions", ([FromBody] UpdateAuctionRequest request, [FromServices] AuctionDbContext dbContext, [FromServices] UpdateAuctionHandler handler) =>
+        app.MapPut("/auctions", async ([FromBody] UpdateAuctionRequest request, [FromServices] AuctionDbContext dbContext, [FromServices] UpdateAuctionHandler handler) =>
         {
             var command = request.Adapt<UpdateAuctionCommand>();
-            var result = handler.Handle(command);
+            var result = await handler.Handle(command);
             var response = result.Adapt<UpdateAuctionResponse>();
 
             return Task.FromResult(Results.NoContent());

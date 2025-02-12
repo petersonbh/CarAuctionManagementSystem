@@ -48,7 +48,7 @@ namespace AuctionInventory.GetVehicle.Tests
         }
 
         [TestMethod()]
-        public void Handle_GetVehiclesByType_Ok()
+        public async Task Handle_GetVehiclesByType_Ok()
         {
             // Arrange
             var context = CreateInMemoryDbContext();
@@ -56,7 +56,7 @@ namespace AuctionInventory.GetVehicle.Tests
             var query = new GetVehicleQuery(type: "SUV", manufacturer: null, model: null, year: 0);
 
             // Act
-            var result = handler.Handle(query);
+            var result = await handler.HandleAsync(query);
 
             // Assert
             Assert.IsNotNull(result);
@@ -65,7 +65,7 @@ namespace AuctionInventory.GetVehicle.Tests
         }
 
         [TestMethod()]
-        public void Handle_GetVehiclesByManufacturer_Ok()
+        public async Task Handle_GetVehiclesByManufacturer_Ok()
         {
             // Arrange
             var context = CreateInMemoryDbContext();
@@ -73,7 +73,7 @@ namespace AuctionInventory.GetVehicle.Tests
             var query = new GetVehicleQuery(type: null, manufacturer: "Toyota", model: null, year: 0);
 
             // Act
-            var result = handler.Handle(query);
+            var result = await handler.HandleAsync(query);
 
             // Assert
             Assert.IsNotNull(result);
@@ -82,7 +82,7 @@ namespace AuctionInventory.GetVehicle.Tests
         }
 
         [TestMethod()]
-        public void Handle_GetVehiclesByModel_Ok()
+        public async Task Handle_GetVehiclesByModel_Ok()
         {
             // Arrange
             var context = CreateInMemoryDbContext();
@@ -90,7 +90,7 @@ namespace AuctionInventory.GetVehicle.Tests
             var query = new GetVehicleQuery(type: null, manufacturer: null, model: "Stonic", year: 0);
 
             // Act
-            var result = handler.Handle(query);
+            var result = await handler.HandleAsync(query);
 
             // Assert
             Assert.IsNotNull(result);
@@ -99,7 +99,7 @@ namespace AuctionInventory.GetVehicle.Tests
         }
 
         [TestMethod()]
-        public void Handle_GetVehiclesByYear_Ok()
+        public async Task Handle_GetVehiclesByYear_Ok()
         {
             // Arrange
             var context = CreateInMemoryDbContext();
@@ -107,7 +107,7 @@ namespace AuctionInventory.GetVehicle.Tests
             var query = new GetVehicleQuery(type: null, manufacturer: null, model: null, year: 2021);
 
             // Act
-            var result = handler.Handle(query);
+            var result = await handler.HandleAsync(query);
 
             // Assert
             Assert.IsNotNull(result);
@@ -116,7 +116,7 @@ namespace AuctionInventory.GetVehicle.Tests
         }
 
         [TestMethod()]
-        public void Handle_GetVehiclesByAllCriteria_Ok()
+        public async Task Handle_GetVehiclesByAllCriteria_Ok()
         {
             // Arrange
             var context = CreateInMemoryDbContext();
@@ -124,7 +124,7 @@ namespace AuctionInventory.GetVehicle.Tests
             var query = new GetVehicleQuery(type: "SUV", manufacturer: "Toyota", model: "RAV4", year: 2021);
 
             // Act
-            var result = handler.Handle(query);
+            var result = await handler.HandleAsync(query);
 
             // Assert
             Assert.IsNotNull(result);

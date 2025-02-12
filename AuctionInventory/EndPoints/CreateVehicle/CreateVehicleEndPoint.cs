@@ -9,10 +9,10 @@ public static class CreateVehicleEndPoint
 {
     public static void MapCreateVehicleEndpoint(this IEndpointRouteBuilder app)
     {
-        app.MapPost("/vehicles", ([FromBody] CreateVehicleRequest request, [FromServices] VehicleContext dbContext, [FromServices] CreateVehicleHandler handler) =>
+        app.MapPost("/vehicles", async ([FromBody] CreateVehicleRequest request, [FromServices] VehicleContext dbContext, [FromServices] CreateVehicleHandler handler) =>
         {
             var command = request.Adapt<CreateVehicleCommand>();
-            var result = handler.Handle(command);
+            var result = await handler.Handle(command);
             var response = result.Adapt<CreateVehicleResponse>();
 
             return Task.FromResult(Results.Created($"/vehicles/{response.Id}", response));

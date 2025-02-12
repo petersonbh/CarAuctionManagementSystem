@@ -10,10 +10,10 @@ public static class GetVehicleEndPoint
     public static void MapGetVehicleEndpoint(this IEndpointRouteBuilder app)
     {
         app.MapGet("/vehicles",
-            (string? type, string? manufacturer, string? model, int? year, [FromServices] VehicleContext dbContext, [FromServices] GetVehicleHandler handler) =>
+            async (string? type, string? manufacturer, string? model, int? year, [FromServices] VehicleContext dbContext, [FromServices] GetVehicleHandler handler) =>
             {
                 var query = new GetVehicleQuery(type?.Trim(), manufacturer?.Trim(), model?.Trim(), year.GetValueOrDefault());
-                var result = handler.Handle(query);
+                var result = await handler.HandleAsync(query);
                 var response = new GetVehicleResponse(result.Vehicles.Select(v => new VehicleDto(
                     v.Id,
                     v.LicensePlate,

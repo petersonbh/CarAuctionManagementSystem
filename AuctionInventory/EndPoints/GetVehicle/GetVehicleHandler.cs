@@ -1,4 +1,5 @@
 ﻿using AuctionInventory.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionInventory.GetVehicle;
 
@@ -15,7 +16,7 @@ public class GetVehicleHandler
         _dbContext = dbContext;
     }
 
-    public GetVehicleResult Handle(GetVehicleQuery query)
+    public async Task<GetVehicleResult> HandleAsync(GetVehicleQuery query)
     {
         var vehiclesQuery = _dbContext.Vehicles.AsQueryable();
 
@@ -46,7 +47,7 @@ public class GetVehicleHandler
             vehiclesQuery = vehiclesQuery.Where(v => v.Year == query.year);
         }
 
-        var vehicles = vehiclesQuery.ToList();
+        var vehicles = await vehiclesQuery.ToListAsync();
 
         return new GetVehicleResult(vehicles);
     }

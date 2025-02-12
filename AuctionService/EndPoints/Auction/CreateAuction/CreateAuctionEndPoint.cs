@@ -9,10 +9,10 @@ public static class CreateAuctionEndPoint
 {
     public static void MapCreateAuctionEndpoint(this IEndpointRouteBuilder app)
     {
-        app.MapPost("/auctions", ([FromBody] CreateAuctionRequest request, [FromServices] AuctionDbContext dbContext, [FromServices] CreateAuctionHandler handler) =>
+        app.MapPost("/auctions", async ([FromBody] CreateAuctionRequest request, [FromServices] AuctionDbContext dbContext, [FromServices] CreateAuctionHandler handler) =>
         {
             var command = request.Adapt<CreateAuctionCommand>();
-            var result = handler.Handle(command);
+            var result = await handler.Handle(command);
             var response = result.Adapt<CreateAuctionResponse>();
 
             // Save vehicle to database

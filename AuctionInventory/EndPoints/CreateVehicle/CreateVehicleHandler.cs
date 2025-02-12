@@ -1,4 +1,5 @@
 ﻿using AuctionInventory.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionInventory.CreateVehicle;
 
@@ -15,9 +16,9 @@ public class CreateVehicleHandler
         _dbContext = dbContext;
     }
 
-    public CreateVehicleResult Handle(CreateVehicleCommand command)
+    public async Task<CreateVehicleResult> Handle(CreateVehicleCommand command)
     {
-        Vehicle? vehicle = _dbContext.Vehicles.SingleOrDefault(v => v.LicensePlate == command.LicensePlate);
+        Vehicle? vehicle = await _dbContext.Vehicles.SingleOrDefaultAsync(v => v.LicensePlate == command.LicensePlate);
         if (vehicle != null)
         {
             throw new VehicleAlreadyExistsException("Vehicle already exists.");
@@ -39,9 +40,8 @@ public class CreateVehicleHandler
                 break;
         }
 
-        // Save vehicle to database
-        _dbContext.Add(vehicle);
-        _dbContext.SaveChanges();
+        await _dbContext.AddAsync(vehicle);
+        await _dbContext.SaveChangesAsync();
 
         if (vehicle == null)
         {
@@ -50,3 +50,4 @@ public class CreateVehicleHandler
         return new CreateVehicleResult(vehicle.Id);
     }
 }
+

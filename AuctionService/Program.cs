@@ -11,9 +11,13 @@ builder.Services.AddDbContext<AuctionDbContext>(opt => opt.UseInMemoryDatabase("
 builder.Services.AddHttpClient(); 
 builder.Services.AddMemoryCache();
 
-// Register RabbitMQ connection
+// Register RabbitMQ connection factory
 var factory = new ConnectionFactory() { HostName = "localhost" };
+builder.Services.AddSingleton<IConnectionFactory>(factory);
+
+// Register RabbitMQ connection
 builder.Services.AddSingleton(factory.CreateConnectionAsync().GetAwaiter().GetResult());
+
 
 // Register BidConsumer as a hosted service
 // Could be implemented as a worker service to improve the performance of the application

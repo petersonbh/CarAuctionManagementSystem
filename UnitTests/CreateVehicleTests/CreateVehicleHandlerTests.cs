@@ -16,7 +16,7 @@ namespace AuctionInventory.CreateVehicle.Tests;
 public class CreateVehicleHandlerTests
 {
     [TestMethod()]
-    public void Handle_CreateVehicle_Ok()
+    public async Task Handle_CreateVehicle_Ok()
     {
         // Arrange
         var mockDbContext = new Mock<VehicleContext>();
@@ -36,7 +36,7 @@ public class CreateVehicleHandlerTests
         );
 
         // Act
-        var result = handler.Handle(command);
+        var result = await handler.Handle(command);
 
         // Assert
         Assert.IsNotNull(result);
@@ -44,7 +44,7 @@ public class CreateVehicleHandlerTests
 
     [TestMethod()]
     [ExpectedException(typeof(VehicleAlreadyExistsException))]
-    public void Handle_CreateVehicle_AlreadyExists_ThrowsException()
+    public async Task Handle_CreateVehicle_AlreadyExists_ThrowsException()
     {
         // Arrange
         var existingVehicle = new Sedan
@@ -73,7 +73,7 @@ public class CreateVehicleHandlerTests
         );
 
         // Act
-        var result = handler.Handle(command);
+        var result = await handler.Handle(command);
 
         // Assert
         // The ExpectedException attribute will handle the assertion
@@ -81,7 +81,7 @@ public class CreateVehicleHandlerTests
 
     [TestMethod()]
     [ExpectedException(typeof(InvalidOperationException))]
-    public void Handle_CreateVehicle_InvalidType_ThrowsException()
+    public async Task Handle_CreateVehicle_InvalidType_ThrowsException()
     {
         // Arrange
         var mockDbContext = new Mock<VehicleContext>();
@@ -101,11 +101,9 @@ public class CreateVehicleHandlerTests
         );
 
         // Act
-        var result = handler.Handle(command);
+        var result = await handler.Handle(command);
 
         // Assert
         // The ExpectedException attribute will handle the assertion
     }
-
-
 }

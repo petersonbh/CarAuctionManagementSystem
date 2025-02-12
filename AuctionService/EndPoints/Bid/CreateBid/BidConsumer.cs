@@ -55,18 +55,6 @@ public class BidConsumer : BackgroundService
         return Task.CompletedTask;
     }
 
-    //private async Task HandleBidAsync(Bid bid, AuctionDbContext auctionContext)
-    //{
-    //    // Business logic to handle the bid
-    //    var auction = await auctionContext.Auctions.FindAsync(bid.AuctionId);
-    //    if (auction != null)// && auction.IsActive)
-    //    {
-    //        auction.Bids.Add(bid);
-    //        await auctionContext.SaveChangesAsync();
-    //        var bids = auctionContext.Bids.ToList();
-    //    }
-    //}
-
     public override void Dispose()
     {
         _channel.CloseAsync();
