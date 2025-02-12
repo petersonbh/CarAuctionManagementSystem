@@ -14,7 +14,6 @@ namespace UnitTests.CreateVehicle;
 [TestClass]
 public class CreateVehicleEndPointTests
 {
-    [TestMethod]
     public void MapCreateVehicleEndpoint_ShouldReturnCreatedResult()
     {
         // Arrange

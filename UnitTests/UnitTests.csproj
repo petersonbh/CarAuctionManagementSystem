@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AuctionInventory\AuctionInventory.csproj" />
     <ProjectReference Include="..\AuctionService\AuctionService.csproj" />
-    <ProjectReference Include="..\CarAuctionManagementSystem\AuctionInventory.csproj" />
   </ItemGroup>
 
 </Project>
