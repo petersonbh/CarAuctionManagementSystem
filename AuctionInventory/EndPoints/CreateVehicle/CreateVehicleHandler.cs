@@ -17,7 +17,7 @@ public class CreateVehicleHandler
 
     public CreateVehicleResult Handle(CreateVehicleCommand command)
     {
-        VehicleEntity? vehicle = _dbContext.Vehicles.SingleOrDefault(v => v.LicensePlate == command.LicensePlate);
+        Vehicle? vehicle = _dbContext.Vehicles.SingleOrDefault(v => v.LicensePlate == command.LicensePlate);
         if (vehicle != null)
         {
             throw new VehicleAlreadyExistsException("Vehicle already exists.");
@@ -26,16 +26,16 @@ public class CreateVehicleHandler
         switch (command.VehicleType)
         {
             case "Sedan":
-                vehicle = new SedanEntity { LicensePlate = command.LicensePlate, Manufacturer = command.Manufacturer, Model = command.Model, Year = command.Year, StartingBid = command.StartingBid };
+                vehicle = new Sedan { LicensePlate = command.LicensePlate, Manufacturer = command.Manufacturer, Model = command.Model, Year = command.Year, StartingBid = command.StartingBid };
                 break;
             case "Truck":
-                vehicle = new TruckEntity { LicensePlate = command.LicensePlate, Manufacturer = command.Manufacturer, Model = command.Model, Year = command.Year, StartingBid = command.StartingBid, LoadCapacity = command.LoadCapacity };
+                vehicle = new Truck { LicensePlate = command.LicensePlate, Manufacturer = command.Manufacturer, Model = command.Model, Year = command.Year, StartingBid = command.StartingBid, LoadCapacity = command.LoadCapacity };
                 break;
             case "Hatchback":
-                vehicle = new HatchbackEntity { LicensePlate = command.LicensePlate, Manufacturer = command.Manufacturer, Model = command.Model, Year = command.Year, StartingBid = command.StartingBid };
+                vehicle = new Hatchback { LicensePlate = command.LicensePlate, Manufacturer = command.Manufacturer, Model = command.Model, Year = command.Year, StartingBid = command.StartingBid };
                 break;
             case "SUV":
-                vehicle = new SUVEntity { LicensePlate = command.LicensePlate, Manufacturer = command.Manufacturer, Model = command.Model, Year = command.Year, StartingBid = command.StartingBid, NumberOfSeats = command.NumberOfSeats };
+                vehicle = new SUV { LicensePlate = command.LicensePlate, Manufacturer = command.Manufacturer, Model = command.Model, Year = command.Year, StartingBid = command.StartingBid, NumberOfSeats = command.NumberOfSeats };
                 break;
         }
 

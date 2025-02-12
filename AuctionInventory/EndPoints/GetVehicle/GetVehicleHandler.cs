@@ -4,7 +4,7 @@ namespace AuctionInventory.GetVehicle;
 
 public record GetVehicleQuery(string type, string manufacturer, string model, int year);
 
-public record GetVehicleResult(List<VehicleEntity> Vehicles);
+public record GetVehicleResult(List<Vehicle> Vehicles);
 
 public class GetVehicleHandler
 {
@@ -23,10 +23,10 @@ public class GetVehicleHandler
         {
             vehiclesQuery = query.type switch
             {
-                "SUV" => vehiclesQuery.OfType<SUVEntity>(),
-                "Truck" => vehiclesQuery.OfType<TruckEntity>(),
-                "Sedan" => vehiclesQuery.OfType<SedanEntity>(),
-                "Hatchback" => vehiclesQuery.OfType<HatchbackEntity>(),
+                "SUV" => vehiclesQuery.OfType<SUV>(),
+                "Truck" => vehiclesQuery.OfType<Truck>(),
+                "Sedan" => vehiclesQuery.OfType<Sedan>(),
+                "Hatchback" => vehiclesQuery.OfType<Hatchback>(),
                 _ => vehiclesQuery
             };
         }

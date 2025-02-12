@@ -25,16 +25,16 @@ namespace AuctionInventory.GetVehicle.Tests
         private void SeedData(VehicleContext context)
         {
             context.Vehicles.AddRange(
-                new SUVEntity { Id = 1, Manufacturer = "Toyota", LicensePlate = "ABC1234", Model = "RAV4", Year = 2021, StartingBid = 20000m },
-                new SedanEntity { Id = 2, Manufacturer = "Honda", LicensePlate = "ABC1255", Model = "Civic", Year = 2020, StartingBid = 15000m },
-                new HatchbackEntity { Id = 3, Manufacturer = "KIA", LicensePlate = "DEF1266", Model = "Stonic", Year = 2024, StartingBid = 18000m },
-                new SUVEntity { Id = 4, Manufacturer = "Ford", LicensePlate = "GHI1234", Model = "Explorer", Year = 2022, StartingBid = 25000m },
-                new SedanEntity { Id = 5, Manufacturer = "Chevrolet", LicensePlate = "JKL1255", Model = "Malibu", Year = 2019, StartingBid = 17000m },
-                new HatchbackEntity { Id = 6, Manufacturer = "Volkswagen", LicensePlate = "MNO1266", Model = "Golf", Year = 2023, StartingBid = 19000m },
-                new SUVEntity { Id = 7, Manufacturer = "Nissan", LicensePlate = "PQR1234", Model = "Rogue", Year = 2021, StartingBid = 22000m },
-                new SedanEntity { Id = 8, Manufacturer = "BMW", LicensePlate = "STU1255", Model = "3 Series", Year = 2020, StartingBid = 30000m },
-                new HatchbackEntity { Id = 9, Manufacturer = "Hyundai", LicensePlate = "VWX1266", Model = "i30", Year = 2022, StartingBid = 16000m },
-                new SUVEntity { Id = 10, Manufacturer = "Mazda", LicensePlate = "YZA1234", Model = "CX-5", Year = 2021, StartingBid = 24000m }
+                new SUV { Id = 1, Manufacturer = "Toyota", LicensePlate = "ABC1234", Model = "RAV4", Year = 2021, StartingBid = 20000m },
+                new Sedan { Id = 2, Manufacturer = "Honda", LicensePlate = "ABC1255", Model = "Civic", Year = 2020, StartingBid = 15000m },
+                new Hatchback { Id = 3, Manufacturer = "KIA", LicensePlate = "DEF1266", Model = "Stonic", Year = 2024, StartingBid = 18000m },
+                new SUV { Id = 4, Manufacturer = "Ford", LicensePlate = "GHI1234", Model = "Explorer", Year = 2022, StartingBid = 25000m },
+                new Sedan { Id = 5, Manufacturer = "Chevrolet", LicensePlate = "JKL1255", Model = "Malibu", Year = 2019, StartingBid = 17000m },
+                new Hatchback { Id = 6, Manufacturer = "Volkswagen", LicensePlate = "MNO1266", Model = "Golf", Year = 2023, StartingBid = 19000m },
+                new SUV { Id = 7, Manufacturer = "Nissan", LicensePlate = "PQR1234", Model = "Rogue", Year = 2021, StartingBid = 22000m },
+                new Sedan { Id = 8, Manufacturer = "BMW", LicensePlate = "STU1255", Model = "3 Series", Year = 2020, StartingBid = 30000m },
+                new Hatchback { Id = 9, Manufacturer = "Hyundai", LicensePlate = "VWX1266", Model = "i30", Year = 2022, StartingBid = 16000m },
+                new SUV { Id = 10, Manufacturer = "Mazda", LicensePlate = "YZA1234", Model = "CX-5", Year = 2021, StartingBid = 24000m }
             );
             context.SaveChanges();
         }

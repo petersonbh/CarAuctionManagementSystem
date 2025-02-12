@@ -1,6 +1,6 @@
 ﻿namespace AuctionInventory.Model;
-public class SUVEntity()
-    : VehicleEntity()
+public class SUV()
+    : Vehicle()
 {
     public int NumberOfSeats { get; set; } 
 

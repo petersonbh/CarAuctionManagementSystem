@@ -1,6 +1,6 @@
 ﻿namespace AuctionInventory.Model;
 
-public class TruckEntity() : VehicleEntity()
+public class Truck() : Vehicle()
 {
     public int LoadCapacity { get; set; }
 

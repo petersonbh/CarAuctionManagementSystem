@@ -1,6 +1,6 @@
 ﻿namespace AuctionInventory.Model;
 
-public abstract class VehicleEntity
+public abstract class Vehicle
 {
     public int Id { get; set; }
     public string LicensePlate { get; set; } 
@@ -10,7 +10,7 @@ public abstract class VehicleEntity
     public int Year { get; set; }
     public decimal StartingBid { get; set; }
 
-    public VehicleEntity() { }
+    public Vehicle() { }
 
     public abstract string GetVehicleType();
 }

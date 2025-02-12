@@ -1,9 +1,10 @@
 ﻿namespace AuctionInventory.Model;
 
-public class HatchbackEntity() : VehicleEntity()
+public class Sedan()
+    : Vehicle()
 {
     public override string GetVehicleType()
     {
-        return "Hatchback";
+        return "Sedan";
     }
 }

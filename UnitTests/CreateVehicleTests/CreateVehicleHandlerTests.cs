@@ -20,7 +20,7 @@ public class CreateVehicleHandlerTests
     {
         // Arrange
         var mockDbContext = new Mock<VehicleContext>();
-        mockDbContext.Setup<DbSet<VehicleEntity>>(x => x.Vehicles).ReturnsDbSet([]);
+        mockDbContext.Setup<DbSet<Vehicle>>(x => x.Vehicles).ReturnsDbSet([]);
 
         var handler = new CreateVehicleHandler(mockDbContext.Object);
 
@@ -47,7 +47,7 @@ public class CreateVehicleHandlerTests
     public void Handle_CreateVehicle_AlreadyExists_ThrowsException()
     {
         // Arrange
-        var existingVehicle = new SedanEntity
+        var existingVehicle = new Sedan
         {
             LicensePlate = "ABC123",
             Manufacturer = "Toyota",
@@ -57,7 +57,7 @@ public class CreateVehicleHandlerTests
         };
 
         var mockDbContext = new Mock<VehicleContext>();
-        mockDbContext.Setup(x => x.Vehicles).ReturnsDbSet(new List<VehicleEntity> { existingVehicle });
+        mockDbContext.Setup(x => x.Vehicles).ReturnsDbSet(new List<Vehicle> { existingVehicle });
 
         var handler = new CreateVehicleHandler(mockDbContext.Object);
 
